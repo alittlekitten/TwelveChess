@@ -10,6 +10,7 @@ function App() {
     <div className="App">
       {tap === "SetNickname" && <SetNickname setTap={setTap} />}
       {tap === "WaitingRoom" && <WaitingRoom setTap={setTap} />}
+      {tap === "GameRoom" && <GameRoom setTap={setTap} />}
     </div>
   );
 }
