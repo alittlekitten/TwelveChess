@@ -9,6 +9,7 @@ function App() {
   return (
     <div className="App">
       {tap === "SetNickname" && <SetNickname setTap={setTap} />}
+      {tap === "WaitingRoom" && <WaitingRoom setTap={setTap} />}
     </div>
   );
 }
