@@ -8,6 +8,7 @@ function App() {
   const [tap, setTap] = useState("SetNickname");
   return (
     <div className="App">
+      {tap === "SetNickname" && <SetNickname setTap={setTap} />}
     </div>
   );
 }
