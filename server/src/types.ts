@@ -2,6 +2,7 @@ import type { Socket, Server } from "socket.io";
 
 export type RoomType = {
   [code: string]: {
+    roomName: string;
     hostSID: string;
     users: {
       [sid: string]: {
