@@ -1,7 +1,7 @@
 import express, { Request, Response, NextFunction } from "express";
-import { PORT } from "./constant";
+import { PORT } from "@src/constant";
 import http from "http";
-import apiRouter from "./api";
+import apiRouter from "@src/api";
 
 const app = express();
 const server = http.createServer(app);
@@ -12,6 +12,6 @@ app.get("/welcome", (req: Request, res: Response, next: NextFunction) => {
   res.send("welcome!");
 });
 
-server.listen("5000", () => {
+server.listen(PORT, () => {
   console.log(`5000번 포트에 접속하셨습니다.`);
 });
