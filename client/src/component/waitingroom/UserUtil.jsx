@@ -11,15 +11,18 @@ const UserUtil = (props) => {
   return (
     <div css={UserUtilContainer}>
       <div className="profile">
-        <img className="profile-picture" src={profilePicture}></img>
+        <img
+          className="profile-picture"
+          src={profilePicture}
+          alt="프로필사진"
+        ></img>
       </div>
       <div className="nickname">
         <p>토뱅병찬</p>
+        <button className="set-nickname-btn" onClick={goSetNickname}>
+          닉네임 설정
+        </button>
       </div>
-
-      <button className="set-nickname-btn" onClick={goSetNickname}>
-        닉네임 설정
-      </button>
     </div>
   );
 };
@@ -32,45 +35,33 @@ const UserUtilContainer = css`
   right: 10%;
   bottom: 10%;
 
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+
   .profile {
-    position: absolute;
-    left: 15%;
-    top: 15%;
-    bottom: 15%;
-    width: 70%;
-    height: 70%;
     .profile-picture {
       width: 80%;
     }
   }
 
   .nickname {
-    display: flex;
-    align-items: center;
-    position: absolute;
-    height: 36px;
-    left: 10%;
-    bottom: 10%;
-
-    p {
-      margin: 0px;
+    .set-nickname-btn {
+      height: 34px;
+      border: 2px solid black;
+      font-family: "EF_MACHO";
+      font-weight: 600;
+      filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
     }
-  }
-  .set-nickname-btn {
-    position: absolute;
-    height: 36px;
-    right: 10%;
-    bottom: 10%;
 
-    height: 34px;
-    border: 2px solid black;
-    font-family: "EF_MACHO";
-    font-weight: 600;
-    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
-  }
+    .set-nickname-btn:hover {
+      background-color: yellow;
+    }
 
-  .set-nickname-btn:hover {
-    background-color: yellow;
+    .set-nickname-btn:active {
+      background-color: yellowgreen;
+    }
   }
 `;
 
