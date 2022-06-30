@@ -1,5 +1,6 @@
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
+import Socket from "../../socket/socket";
 
 const CreateRoomModal = (props) => {
   const { setTap, setIsModalOn } = props;
