@@ -1,9 +1,12 @@
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
 import profilePicture from "../../images/profilePicture.jpg";
+import { useSelector } from "react-redux";
 
 const UserUtil = (props) => {
   const { setTap } = props;
+  const { nickname } = useSelector((state) => state.user.value);
+
   const goSetNickname = () => {
     setTap("SetNickname");
   };
@@ -18,7 +21,7 @@ const UserUtil = (props) => {
         ></img>
       </div>
       <div className="nickname">
-        <p>토뱅병찬</p>
+        <p>{nickname}</p>
         <button className="set-nickname-btn" onClick={goSetNickname}>
           닉네임 설정
         </button>
