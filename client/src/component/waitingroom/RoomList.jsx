@@ -10,7 +10,7 @@ const RoomList = (props) => {
   return (
     <div css={RoomListContainer}>
       <div className="room">
-        <p clasName="title">1. 나는 안됐네~</p>
+        <p className="title">1. 나는 안됐네~</p>
         <p className="participants">인원수 1/2</p>
         <button className="enter" onClick={goGameRoom}>
           입장
