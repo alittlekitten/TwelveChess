@@ -22,7 +22,7 @@ const create = ({
       hostSID: sid,
       users: {},
     };
-    rooms[roomCode].users[sid] = user;
+    socket.emit("CREATE_SUCCESS", { roomCode });
   });
 
   return { io, socket, rooms, targetInfo };

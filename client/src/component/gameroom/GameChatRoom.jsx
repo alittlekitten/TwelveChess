@@ -7,7 +7,7 @@ const GameChatRoom = () => {
       <div className="chat-content">
         <p>조효은: 나는 됐네~</p>
         <p>dbwlsanes: 나도 됐네~</p>
-        </div>
+      </div>
       <div className="chat-input">
         <input type="text" className="input-box"></input>
         <button className="input-btn">SEND</button>

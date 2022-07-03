@@ -1,16 +1,22 @@
+import { useState } from "react";
 import ChatRoom from "../component/waitingroom/ChatRoom";
+import CreateRoomModal from "../component/waitingroom/CreateRoomModal";
 import RoomList from "../component/waitingroom/RoomList";
+import RoomUtil from "../component/waitingroom/RoomUtil";
 import UserList from "../component/waitingroom/UserList";
 import UserUtil from "../component/waitingroom/UserUtil";
 
-const WaitingRoom = (props) => {
-  const { setTap } = props;
+const WaitingRoom = () => {
+  const [isModalOn, setIsModalOn] = useState(false);
+
   return (
     <div>
-      <RoomList setTap={setTap} />
+      <RoomList />
+      <RoomUtil setIsModalOn={setIsModalOn} />
       <UserList />
       <ChatRoom />
-      <UserUtil setTap={setTap} />
+      <UserUtil />
+      {isModalOn && <CreateRoomModal setIsModalOn={setIsModalOn} />}
     </div>
   );
 };
