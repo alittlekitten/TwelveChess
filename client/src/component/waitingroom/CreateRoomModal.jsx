@@ -1,12 +1,14 @@
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
-import Socket from "../../socket/socket";
+import { useDispatch } from "react-redux";
+import { setTap } from "../../store/user";
 
 const CreateRoomModal = (props) => {
-  const { setTap, setIsModalOn } = props;
+  const { setIsModalOn } = props;
+  const dispatch = useDispatch();
   const createRoom = () => {
     setIsModalOn(false);
-    setTap("GameRoom");
+    dispatch(setTap("GameRoom"));
   };
   const offCreateModal = () => {
     setIsModalOn(false);

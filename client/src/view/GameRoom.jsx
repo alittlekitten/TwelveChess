@@ -7,8 +7,7 @@ import User1Info from "../component/gameroom/User1Info";
 import User2Info from "../component/gameroom/User2Info";
 import Socket from "../socket/socket";
 
-const GameRoom = (props) => {
-  const { setTap } = props;
+const GameRoom = () => {
   useEffect(() => {
     Socket.connect();
     return () => {
@@ -17,7 +16,7 @@ const GameRoom = (props) => {
   }, []);
   return (
     <div>
-      <BackBtn setTap={setTap} />
+      <BackBtn />
       <GameBoard />
       <GameChatRoom />
       <InformationBoard />

@@ -2,20 +2,24 @@ import { createSlice } from "@reduxjs/toolkit";
 
 export const userSlice = createSlice({
   name: "user",
-  initialState: { value: { tap: "", nickname: "", roomCode: "" } },
+  initialState: {
+    tap: "SetNickname",
+    nickname: "기본",
+    roomCode: "",
+  },
   reducers: {
     setTap: (state, action) => {
-      state.value = action.payload;
+      state.tap = action.payload;
     },
     setNickname: (state, action) => {
-      state.value = action.payload;
+      state.nickname = action.payload;
     },
     setRoom: (state, action) => {
-      state.value = action.payload;
+      state.roomCode = action.payload;
     },
   },
 });
 
-export const { setNickname } = userSlice.actions;
+export const { setTap, setNickname, setRoom } = userSlice.actions;
 
 export default userSlice.reducer;

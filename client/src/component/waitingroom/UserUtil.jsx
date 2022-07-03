@@ -1,14 +1,16 @@
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
 import profilePicture from "../../images/profilePicture.jpg";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { setTap } from "../../store/user";
+import { useEffect } from "react";
 
-const UserUtil = (props) => {
-  const { setTap } = props;
-  const { nickname } = useSelector((state) => state.user.value);
+const UserUtil = () => {
+  const dispatch = useDispatch();
+  const nickname = useSelector((state) => state.user.nickname);
 
   const goSetNickname = () => {
-    setTap("SetNickname");
+    dispatch(setTap("SetNickname"));
   };
 
   return (

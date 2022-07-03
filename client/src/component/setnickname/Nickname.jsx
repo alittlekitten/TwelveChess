@@ -1,18 +1,18 @@
 /** @jsxImportSource @emotion/react */
 import { useRef } from "react";
 import { css } from "@emotion/react";
-import { useDispatch } from "react-redux";
-import { setNickname } from "../../store/user";
+import { useSelector, useDispatch } from "react-redux";
+import { setNickname, setTap } from "../../store/user";
+import { useEffect } from "react";
 
-const Nickname = (props) => {
-  const { setTap } = props;
+const Nickname = () => {
   const dispatch = useDispatch();
   const nicknameRef = useRef();
+  const nickname = useSelector((state) => state.user.nickname);
 
   const goWaitingRoom = () => {
-    console.log(nicknameRef.current.value);
-    dispatch(setNickname({ nickname: nicknameRef.current.value }));
-    setTap("WaitingRoom");
+    dispatch(setNickname(nicknameRef.current.value));
+    dispatch(setTap("WaitingRoom"));
   };
 
   return (

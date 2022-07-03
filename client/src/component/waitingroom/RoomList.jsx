@@ -1,10 +1,12 @@
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
+import { setTap } from "../../store/user";
+import { useDispatch } from "react-redux";
 
-const RoomList = (props) => {
-  const { setTap } = props;
+const RoomList = () => {
+  const dispatch = useDispatch();
   const goGameRoom = () => {
-    setTap("GameRoom");
+    dispatch(setTap("GameRoom"));
   };
 
   return (
