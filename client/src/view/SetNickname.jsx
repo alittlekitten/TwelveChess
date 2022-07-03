@@ -1,12 +1,11 @@
 import Nickname from "../component/setnickname/Nickname";
 import Logo from "../component/setnickname/Logo";
 
-const SetNickname = (props) => {
-  const { setTap } = props;
+const SetNickname = () => {
   return (
     <div>
       <Logo />
-      <Nickname setTap={setTap} />
+      <Nickname />
     </div>
   );
 };

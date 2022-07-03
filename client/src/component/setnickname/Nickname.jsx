@@ -1,11 +1,18 @@
 /** @jsxImportSource @emotion/react */
+import { useRef } from "react";
 import { css } from "@emotion/react";
+import { useSelector, useDispatch } from "react-redux";
+import { setNickname, setTap } from "../../store/user";
+import { useEffect } from "react";
 
-const Nickname = (props) => {
-  const { setTap } = props;
-  console.log(props);
+const Nickname = () => {
+  const dispatch = useDispatch();
+  const nicknameRef = useRef();
+  const nickname = useSelector((state) => state.user.nickname);
+
   const goWaitingRoom = () => {
-    setTap("WaitingRoom");
+    dispatch(setNickname(nicknameRef.current.value));
+    dispatch(setTap("WaitingRoom"));
   };
 
   return (
@@ -15,6 +22,7 @@ const Nickname = (props) => {
           className="nicknameInput"
           placeholder="닉네임을 입력해주세요"
           type="text"
+          ref={nicknameRef}
         ></input>
         <button className="nicknameBtn" onClick={goWaitingRoom}>
           NEXT

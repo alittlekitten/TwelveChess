@@ -1,16 +1,18 @@
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
+import { setTap } from "../../store/user";
+import { useDispatch } from "react-redux";
 
-const RoomList = (props) => {
-  const { setTap } = props;
+const RoomList = () => {
+  const dispatch = useDispatch();
   const goGameRoom = () => {
-    setTap("GameRoom");
+    dispatch(setTap("GameRoom"));
   };
 
   return (
     <div css={RoomListContainer}>
       <div className="room">
-        <p clasName="title">1. 나는 안됐네~</p>
+        <p className="title">1. 나는 안됐네~</p>
         <p className="participants">인원수 1/2</p>
         <button className="enter" onClick={goGameRoom}>
           입장
