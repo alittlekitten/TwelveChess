@@ -14,15 +14,18 @@ const create = ({
   rooms,
   targetInfo,
 }: SocketPropType): SocketPropType => {
-  socket.on("CREATE_REQUEST", (user, roomName) => {
+  socket.on("CREATE_REQUEST", (roomSetting) => {
+    console.log("요청받음");
+    const { roomName } = roomSetting;
     const roomCode = createRoomCode(rooms);
     const sid = socket.id;
     rooms[roomCode] = {
       roomName,
-      hostSID: sid,
+      hostSID: "",
       users: {},
+      isStarted: false,
     };
-    socket.emit("CREATE_SUCCESS", { roomCode });
+    socket.emit("CREATE_SUCCESS", roomCode);
   });
 
   return { io, socket, rooms, targetInfo };
