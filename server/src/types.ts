@@ -9,6 +9,7 @@ export type RoomType = {
         nickname: string;
       };
     };
+    isStarted: boolean;
   };
 };
 

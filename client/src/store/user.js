@@ -14,12 +14,12 @@ export const userSlice = createSlice({
     setNickname: (state, action) => {
       state.nickname = action.payload;
     },
-    setRoom: (state, action) => {
+    setRoomCode: (state, action) => {
       state.roomCode = action.payload;
     },
   },
 });
 
-export const { setTap, setNickname, setRoom } = userSlice.actions;
+export const { setTap, setNickname, setRoomCode } = userSlice.actions;
 
 export default userSlice.reducer;

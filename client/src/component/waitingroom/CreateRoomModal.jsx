@@ -1,23 +1,45 @@
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
 import { useDispatch } from "react-redux";
-import { setTap } from "../../store/user";
+import { setTap, setRoomCode } from "../../store/user";
+import Socket from "../../socket/socket";
+import { useRef, useEffect } from "react";
 
 const CreateRoomModal = (props) => {
   const { setIsModalOn } = props;
   const dispatch = useDispatch();
-  const createRoom = () => {
-    setIsModalOn(false);
+  const socketRef = useRef();
+  const roomNameRef = useRef();
+
+  const joining = (roomCode) => {
+    dispatch(setRoomCode(roomCode));
     dispatch(setTap("GameRoom"));
+    socketRef.current.disconnecting();
   };
+
+  const createRoom = () => {
+    socketRef.current.createRoom({ roomName: roomNameRef.current.value });
+  };
+
   const offCreateModal = () => {
     setIsModalOn(false);
   };
+
+  useEffect(() => {
+    Socket.connect();
+    if (socketRef.current) return;
+    socketRef.current = Socket.create({ joining });
+    return () => {
+      Socket.disconnect();
+    };
+  }, []);
+
   return (
     <div css={BackgroundDimmingContainer}>
       <div css={ModalContainer}>
         <div className="inputs">
-          방 이름 : <input className="room-name-input"></input>
+          방 이름 :{" "}
+          <input className="room-name-input" ref={roomNameRef}></input>
         </div>
         <div className="btns">
           <button className="create-btn" onClick={createRoom}>

@@ -6,6 +6,8 @@ import create from "@controller/socket/create";
 import enter from "@controller/socket/enter";
 import chat from "@controller/socket/chat";
 
+export const rooms: RoomType = {}; // 방이 저장되는 공간
+
 const socketLoader = (server: any): void => {
   const io = new Server(server, {
     cors: {
@@ -14,8 +16,6 @@ const socketLoader = (server: any): void => {
       methods: ["GET", "POST"],
     },
   });
-
-  const rooms: RoomType = {}; // 방이 저장되는 공간
 
   io.on("connection", (socket: Socket): void => {
     console.log("socket connection!!", socket.id);

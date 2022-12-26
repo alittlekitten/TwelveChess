@@ -15,8 +15,8 @@ const Socket = () => {
     getSID: () => socket.id,
     connect: () => socket.connect(),
     disconnect: () => socket.disconnect(),
-    create: () => create(socket),
-    enter: () => enter(socket),
+    create: create(socket),
+    enter: enter(socket),
   };
 };
 
