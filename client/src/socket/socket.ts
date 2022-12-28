@@ -1,3 +1,4 @@
+import Nickname from '@src/components/setnickname/Nickname';
 import io from 'socket.io-client';
 import { BACK_BASE_URL } from '../constant';
 import create from './create';
@@ -9,6 +10,7 @@ const Socket = () => {
     upgrade: false,
     forceNew: true,
   });
+  let accessors: object;
   socket.disconnect();
 
   return {
@@ -17,6 +19,18 @@ const Socket = () => {
     disconnect: () => socket.disconnect(),
     create: create(socket),
     enter: enter(socket),
+    access: (nickname:string) => {
+      socket.emit("access", nickname);
+    },
+    random: () => {
+      socket.emit("random");
+    },
+    getData: (setAccessor) => {
+      socket.on("getWaitingRoomsInfo",(data) => {setAccessor(data);
+
+      },);
+      
+    }
   };
 };
 

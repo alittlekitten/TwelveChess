@@ -12,12 +12,14 @@ const enter = (socket) => (closure) => {
   });
 
   socket.on('ENTER_OTHER_USER', (user) => {
-    setUsers((prev) => [...prev, user]);
+    // setUsers((pr) => [...pr, user]);
+    console.log("받아온유저", user);
+    console.log("셋아더유저", setUsers);   
+    setUsers(user);
   });
 
-  socket.on('ENTER_EXIST_ROOM', ({ users, room }) => {
-    setUsers(users);
-    setRoom(room);
+  socket.on('ENTER_EXIST_ROOM', (users) => {
+    
   });
 
   socket.on('EXIT_USER', (exitId) => {
@@ -32,7 +34,7 @@ const enter = (socket) => (closure) => {
     alert('READY_ERROR');
   });
 
-  const joinRoom = (roomCode) => socket.emit('JOIN_ROOM', { roomCode });
+  const joinRoom = (data) => socket.emit('ENTER_ROOM', data);
 
   const ready = (roomCode, isReady) =>
     socket.emit('TOGGLE_READY', { roomCode, isReady });

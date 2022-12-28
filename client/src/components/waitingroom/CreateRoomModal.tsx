@@ -1,8 +1,8 @@
 /** @jsxImportSource @emotion/react */
 import { css } from '@emotion/react';
-import { useAppDispatch } from '@src/store/hooks';
-import { setTap, setRoomCode } from '../../store/user';
-import Socket from '../../socket/socket';
+import { useAppDispatch } from '@store/hooks';
+import { setTap, setRoomCode } from '@store/user';
+import Socket from '@socket/socket';
 import { useRef, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 

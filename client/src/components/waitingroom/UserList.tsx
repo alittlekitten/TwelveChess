@@ -1,7 +1,14 @@
 /** @jsxImportSource @emotion/react */
 import { css } from '@emotion/react';
+import React, { useEffect, useState } from 'react';
 
-const UserList = () => {
+interface IUserData {
+  nickname: String;
+}
+
+const UserList = (props) => {
+  console.log("이친구", props.accessor);
+
   return (
     <div css={UserListContainer}>
       <div className="title">
@@ -9,9 +16,7 @@ const UserList = () => {
         <hr />
       </div>
       <div className="user-list">
-        <p>토뱅병찬</p>
-        <p>조효은</p>
-        <p>dbwlsanes</p>
+        {props.accessor.map((elem, i) =><p key={i}>{elem}</p>)}
       </div>
     </div>
   );
