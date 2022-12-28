@@ -1,7 +1,8 @@
 import io from 'socket.io-client';
-import { BACK_BASE_URL } from '../constant';
+import { BACK_BASE_URL } from '@src/constant';
 import create from './create';
 import enter from './enter';
+import wait from './wait';
 
 const Socket = () => {
   const socket = io(BACK_BASE_URL, {
@@ -17,6 +18,7 @@ const Socket = () => {
     disconnect: () => socket.disconnect(),
     create: create(socket),
     enter: enter(socket),
+    wait: wait(socket),
   };
 };
 

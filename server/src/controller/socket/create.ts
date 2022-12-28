@@ -1,4 +1,4 @@
-import type { RoomType, SocketPropType } from "@src/types";
+import type { RoomType, SocketPropType } from '@src/types';
 
 const createRoomCode = (rooms: RoomType) => {
   while (true) {
@@ -12,23 +12,24 @@ const create = ({
   io,
   socket,
   rooms,
+  waitingRoom,
   targetInfo,
 }: SocketPropType): SocketPropType => {
-  socket.on("CREATE_REQUEST", (roomSetting) => {
-    console.log("요청받음");
+  socket.on('CREATE_REQUEST', (roomSetting) => {
+    console.log('요청받음');
     const { roomName } = roomSetting;
     const roomCode = createRoomCode(rooms);
     const sid = socket.id;
     rooms[roomCode] = {
       roomName,
-      hostSID: "",
+      hostSID: '',
       users: {},
       isStarted: false,
     };
-    socket.emit("CREATE_SUCCESS", roomCode);
+    socket.emit('CREATE_SUCCESS', roomCode);
   });
 
-  return { io, socket, rooms, targetInfo };
+  return { io, socket, rooms, waitingRoom, targetInfo };
 };
 
 export default create;

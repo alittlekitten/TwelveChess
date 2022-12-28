@@ -1,4 +1,4 @@
-import type { Socket, Server } from "socket.io";
+import type { Socket, Server } from 'socket.io';
 
 export type RoomType = {
   [code: string]: {
@@ -17,6 +17,7 @@ export type EnterPropType = {
   io: Server;
   socket: Socket;
   rooms: RoomType;
+  waitingRoom: RoomType;
 };
 
 export type TargetInfoType = {
@@ -27,5 +28,6 @@ export type SocketPropType = {
   io: Server;
   socket: Socket;
   rooms: RoomType;
+  waitingRoom: RoomType;
   targetInfo: TargetInfoType;
 };
